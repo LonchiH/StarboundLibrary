@@ -13,6 +13,9 @@
         android:theme="@style/Theme.StarboundLibrary"
         tools:targetApi="31">
         <activity
+            android:name=".bookDetail"
+            android:exported="false" />
+        <activity
             android:name=".Login"
             android:exported="true"
             android:theme="@style/Theme.StarboundLibrary.Splash">
