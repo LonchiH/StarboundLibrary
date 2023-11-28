@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.service.credentials.CreateEntry
 import android.util.Patterns
 import android.view.View
 import android.widget.Button
@@ -16,7 +15,6 @@ import com.example.starboundlibrary.databinding.ActivitySignupBinding
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.auth
 import com.google.firebase.database.FirebaseDatabase
 
@@ -72,15 +70,25 @@ class Signup : AppCompatActivity() {
 
         if (name.isEmpty()) {
             showToast(this, "Enter your name...")
+            regBtn.setVisibility(View.VISIBLE)
+            loadingProgress.setVisibility(View.INVISIBLE)
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             //invalid email add pattern
             showToast(this, "Invalid Email Pattern...")
+            regBtn.setVisibility(View.VISIBLE)
+            loadingProgress.setVisibility(View.INVISIBLE)
         } else if (password.isEmpty()) {
             showToast(this, "Enter password...")
+            regBtn.setVisibility(View.VISIBLE)
+            loadingProgress.setVisibility(View.INVISIBLE)
         } else if (password2.isEmpty()) {
             showToast(this, "Confirm password...")
+            regBtn.setVisibility(View.VISIBLE)
+            loadingProgress.setVisibility(View.INVISIBLE)
         } else if (password != password2) {
             showToast(this, "Password doesn't match...")
+            regBtn.setVisibility(View.VISIBLE)
+            loadingProgress.setVisibility(View.INVISIBLE)
         } else  {
             CreateUserAccount(email, name, password)
         }
@@ -97,62 +105,40 @@ class Signup : AppCompatActivity() {
                     finish()
                 } else {
                     // If sign in fails, display a message to the user.
-                    showToast(this, "createUserWithEmail:failure" + task.exception)
+                    showToast(this, "Failed to create account")
                     regBtn.setVisibility(View.VISIBLE);
                     loadingProgress.setVisibility(View.INVISIBLE);
-                    updateUI(null)
                 }
             }
     }
 
     private fun updateUserInfo(userName: String, currentUser: FirebaseUser?) {
-        val user = currentUser ?: return // Return if the user is null
 
-        if (userName.isNotBlank()) {
-            // Update user display name
-            val profileUpdates = UserProfileChangeRequest.Builder()
-                .setDisplayName(userName)
-                .build()
+        val timestamp = System.currentTimeMillis()
+        val uid = auth.uid
 
-            user.updateProfile(profileUpdates)
-                .addOnCompleteListener { task ->
-                    if (task.isSuccessful) {
-                        showToast(this, "User profile updated successfully")
+        val hashMap: HashMap<String, Any?> = HashMap()
+        hashMap["uid"] = uid
+        hashMap["email"] = email
+        hashMap["name"] = name
+        hashMap["profileImage"] = "" // add on profile edit
+        hashMap["userType"] = "user" // admin will be manually edited on firebase db
+        hashMap["timestamp"] = timestamp
 
-                        // Update other user information in the Firebase Realtime Database
-                        val databaseReference = FirebaseDatabase.getInstance().reference
-                        val userReference = databaseReference.child("users").child(user.uid)
 
-                        // Update user name and full name in the "users" node
-                        userReference.child("userName").setValue(userName)
+        // set data to db
+        val ref = FirebaseDatabase.getInstance().getReference("Users")
+        ref.child(uid!!)
+            .setValue(hashMap)
+            .addOnSuccessListener {
+                showToast(this, "Account created...")
+                startActivity(Intent(this@Signup, DashboardUserActivity::class.java))
+                finish()
+            }
+            .addOnFailureListener {e ->
+                showToast(this, "Failed saving user due to ${e.message}")
+            }
 
-                        // Optionally, you can update other user information here
-                    } else {
-                        showToast(this, "Failed to update user profile")
-                    }
-                }
-        } else {
-            showToast(this, "Username is null or empty")
-        }
-    }
-
-    private fun updateUI(user: FirebaseUser?) {
-        if (user != null) {
-            // Get user information
-            val userName = user.displayName
-            val userEmail = user.email
-
-            // Pass user information to MainActivity
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("USERNAME", userName)
-            intent.putExtra("EMAIL", userEmail)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
-            finish() // This ensures the user cannot go back to the SignUp activity using the back button
-        } else {
-            // Handle the case where the user is not signed in
-            // You can add additional logic here if needed
-        }
     }
 
     fun showToast(context: Context, message: String, duration: Int = Toast.LENGTH_SHORT) {
