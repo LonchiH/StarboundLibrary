@@ -24,12 +24,15 @@ class DashboardUserActivity : AppCompatActivity() {
     }
 
     private fun checkUser() {
+        // Retrieve the user name from the intent
+        val userName = intent.getStringExtra("userName")
+
         val firebaseUser = auth.currentUser
         if (firebaseUser == null) {
             binding.titleTv.text = "Not Logged In"
             finish()
         } else {
-
+            binding.titleTv.text = "Hello there, $userName"
         }
     }
 

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.Button
@@ -92,13 +93,14 @@ class Login : AppCompatActivity() {
 
         val firebaseUser = auth.currentUser!!
 
-        val ref = FirebaseDatabase.getInstance().getReference("User")
+        val ref = FirebaseDatabase.getInstance().getReference("Users")
         ref.child(firebaseUser.uid)
             .addListenerForSingleValueEvent(object: ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val userType = snapshot.child("userType").value
+                    val userName = snapshot.child("name").value as? String
                     if (userType == "user") {
-                        startActivity(Intent(this@Login, DashboardUserActivity::class.java))
+                        startActivity(Intent(this@Login, DashboardUserActivity::class.java).putExtra("userName", userName))
                         finish()
                     } else {
                         startActivity(Intent(this@Login, DashboardAdminActivity::class.java))
