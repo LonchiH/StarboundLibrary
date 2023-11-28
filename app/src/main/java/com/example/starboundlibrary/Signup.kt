@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.service.credentials.CreateEntry
+import android.util.Patterns
 import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
@@ -27,7 +29,6 @@ class Signup : AppCompatActivity() {
     private lateinit var userEmail: TextInputLayout
     private lateinit var userPassword: TextInputLayout
     private lateinit var userPassword2: TextInputLayout
-    private lateinit var userFullName: TextInputLayout
     private lateinit var userName: TextInputLayout
     @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +43,6 @@ class Signup : AppCompatActivity() {
         userEmail = binding.regEmail
         userPassword = binding.regPassword
         userPassword2 = binding.regConfirmPassword
-        userFullName = binding.regFullName
         userName = binding.regUsername
         regBtn = binding.regBtn
         loadingProgress = binding.progressBar
@@ -53,39 +53,47 @@ class Signup : AppCompatActivity() {
 
             regBtn.setVisibility(View.INVISIBLE)
             loadingProgress.setVisibility(View.VISIBLE)
-            val email: String = binding.regEmail.editText?.text.toString()
-            val password: String = binding.regPassword.editText?.text.toString()
-            val password2: String = binding.regConfirmPassword.editText?.text.toString()
-            val fullName: String = binding.regFullName.editText?.text.toString()
-            val userName: String = binding.regUsername.editText?.text.toString()
 
-            if(email.isEmpty() || userName.isEmpty() || fullName.isEmpty() || password.isEmpty()  || !password.equals(password2)) {
-
-                // something goes wrong : all fields must be filled
-                // we need to display an error message
-                showToast(this,"Please Verify all fields")
-                regBtn.setVisibility(View.VISIBLE);
-                loadingProgress.setVisibility(View.INVISIBLE);
-
-            }
-            else {
-                // everything is ok and all fields are filled now we can start creating user account
-                // CreateUserAccount method will try to create the user if the email is valid
-                CreateUserAccount(email, userName, fullName, password)
-            }
+            validateData()
 
         }
 
     }
 
-    private fun CreateUserAccount(email: String, userName: String, fullName: String, password: String) {
+    private var name = ""
+    private var email = ""
+    private var password = ""
+
+    private fun validateData() {
+        email = binding.regEmail.editText?.text.toString().trim()
+        name = binding.regUsername.editText?.text.toString().trim()
+        password = binding.regPassword.editText?.text.toString().trim()
+        val password2: String = binding.regConfirmPassword.editText?.text.toString().trim()
+
+        if (name.isEmpty()) {
+            showToast(this, "Enter your name...")
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            //invalid email add pattern
+            showToast(this, "Invalid Email Pattern...")
+        } else if (password.isEmpty()) {
+            showToast(this, "Enter password...")
+        } else if (password2.isEmpty()) {
+            showToast(this, "Confirm password...")
+        } else if (password != password2) {
+            showToast(this, "Password doesn't match...")
+        } else  {
+            CreateUserAccount(email, name, password)
+        }
+    }
+
+    private fun CreateUserAccount(email: String, name: String, password: String) {
         auth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     showToast(this, "createUserWithEmail:success")
                     val user = auth.currentUser
-                    updateUserInfo(userName, fullName, auth.getCurrentUser())
+                    updateUserInfo(name, auth.getCurrentUser())
                     finish()
                 } else {
                     // If sign in fails, display a message to the user.
@@ -97,7 +105,7 @@ class Signup : AppCompatActivity() {
             }
     }
 
-    private fun updateUserInfo(userName: String, userFullName: String, currentUser: FirebaseUser?) {
+    private fun updateUserInfo(userName: String, currentUser: FirebaseUser?) {
         val user = currentUser ?: return // Return if the user is null
 
         if (userName.isNotBlank()) {
@@ -117,7 +125,6 @@ class Signup : AppCompatActivity() {
 
                         // Update user name and full name in the "users" node
                         userReference.child("userName").setValue(userName)
-                        userReference.child("fullName").setValue(userFullName)
 
                         // Optionally, you can update other user information here
                     } else {
