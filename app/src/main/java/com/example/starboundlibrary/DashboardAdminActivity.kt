@@ -21,6 +21,10 @@ class DashboardAdminActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         checkUser()
+
+        binding.addCategoryBtn.setOnClickListener {
+            startActivity(Intent(this, CategoryAddActivity::class.java))
+        }
     }
 
     private fun checkUser() {
