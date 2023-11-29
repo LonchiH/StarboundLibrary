@@ -3,6 +3,9 @@ package com.example.starboundlibrary
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import com.google.android.material.search.SearchView
+import androidx.core.view.MenuItemCompat
 import com.example.starboundlibrary.databinding.ActivityDashboardAdminBinding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -56,5 +59,18 @@ class DashboardAdminActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.search, menu);
+
+        val searchItem = menu.findItem(R.id.action_search)
+        val searchView = MenuItemCompat.getActionView(searchItem) as SearchView
+
+        // Set the query hint
+        searchView.hint = "Looking for something?"
+        searchView.clearFocus()
+
+        return super.onCreateOptionsMenu(menu)
     }
 }
