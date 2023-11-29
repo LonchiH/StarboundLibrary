@@ -10,11 +10,20 @@ import com.example.starboundlibrary.databinding.ActivityDashboardAdminBinding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class DashboardAdminActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDashboardAdminBinding
     private lateinit var auth: FirebaseAuth
+
+    // arraylist to hold category
+    private lateinit var  categoryArrayList: ArrayList<ModelCategory>
+    // adapter
+    private lateinit var adapterCategory: AdapterCategory
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,10 +33,36 @@ class DashboardAdminActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
         checkUser()
+        loadCategories()
 
         binding.addCategoryBtn.setOnClickListener {
             startActivity(Intent(this, CategoryAddActivity::class.java))
         }
+    }
+
+    private fun loadCategories() {
+        // init
+        categoryArrayList = ArrayList()
+
+        val ref = FirebaseDatabase.getInstance().getReference("Categories")
+        ref.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                // clear before add
+                categoryArrayList.clear()
+                for (ds in snapshot.children){
+                    val model = ds.getValue(ModelCategory::class.java)
+                    categoryArrayList.add(model!!)
+                }
+
+                // setup adapter
+                adapterCategory = AdapterCategory(this@DashboardAdminActivity, categoryArrayList)
+                //set adapter tp recycler view
+                binding.categoriesRv.adapter = adapterCategory
+            }
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })
     }
 
     private fun checkUser() {

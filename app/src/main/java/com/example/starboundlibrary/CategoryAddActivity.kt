@@ -4,6 +4,8 @@ import android.app.ProgressDialog
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import com.example.starboundlibrary.databinding.ActivityCategoryAddBinding
 import com.google.firebase.auth.FirebaseAuth

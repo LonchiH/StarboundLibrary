@@ -25,7 +25,17 @@
             android:textStyle="bold" />
 
     </androidx.appcompat.widget.Toolbar>
-    
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/categoriesRv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/regToolbar"
+        android:layout_margin="5dp"
+        tools:listitem="@layout/row_category"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
     <LinearLayout
         android:id="@+id/addCategory"
         android:layout_width="match_parent"
@@ -67,14 +77,15 @@
             </com.google.android.material.floatingactionbutton.FloatingActionButton>
         </LinearLayout>
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_navigation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:menu="@menu/bottom_navigation_menu"
-            app:labelVisibilityMode="selected"
-            
-            />
+            <!--Ill add this later on other views-->
+<!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--            android:id="@+id/bottom_navigation"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:menu="@menu/bottom_navigation_menu"-->
+<!--            app:labelVisibilityMode="selected"-->
+
+<!--            />-->
 
     </LinearLayout>
 
