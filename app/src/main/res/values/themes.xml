@@ -30,4 +30,8 @@
     </style>
 
     <style name="Theme.StarboundLibrary" parent="Base.Theme.StarboundLibrary" />
+
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/md_theme_light_onSecondaryContainer</item>
+    </style>
 </resources>
