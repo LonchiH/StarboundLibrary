@@ -51,6 +51,7 @@ dependencies {
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.google.firebase:firebase-crashlytics:18.6.0")
+    implementation("com.google.firebase:firebase-storage-ktx:20.3.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -74,4 +75,6 @@ dependencies {
     // google analytics
     implementation("com.google.firebase:firebase-analytics:21.5.0")
 
+    // pdf library
+    implementation("com.github.barteksc:android-pdf-viewer:2.8.2")
 }
