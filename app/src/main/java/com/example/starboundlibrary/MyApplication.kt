@@ -46,7 +46,6 @@ class MyApplication : Application() {
             progressBar: ProgressBar,
             pagesTv: TextView?
         ){
-            val TAG = "PDF_THUMBNAIL_TAG"
 
             val ref = FirebaseStorage.getInstance().getReferenceFromUrl(pdfUrl)
             ref.getBytes(Constants.MAX_BYTES_PDF)
@@ -69,6 +68,7 @@ class MyApplication : Application() {
                                 pagesTv.text = "$nbPages"
                             }
                         }
+                        .load()
                 }
                 .addOnFailureListener {
 
