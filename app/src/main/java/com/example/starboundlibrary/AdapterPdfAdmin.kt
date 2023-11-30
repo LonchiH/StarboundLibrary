@@ -16,7 +16,7 @@ class AdapterPdfAdmin: RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fil
     private lateinit var binding: RowPdfAdminBinding
     private val filterList: ArrayList<ModelPdf>
 
-    var filter: FilterPdfAdmin? = null
+    public var filter: FilterPdfAdmin? = null
 
     constructor(context: Context, pdfArrayList: ArrayList<ModelPdf>) : super() {
         this.context = context

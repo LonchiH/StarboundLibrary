@@ -122,7 +122,7 @@ class PdfAddActivity : AppCompatActivity() {
         hashMap["categoryId"] = "$selectCategoryId"
         hashMap["url"] = "$uploadedPdfUrl"
         hashMap["timestamp"] = timestamp
-        hashMap["viewcsount"] = 0
+        hashMap["viewsCount"] = 0
         hashMap["downloadsCount"] = 0
 
         // db ref

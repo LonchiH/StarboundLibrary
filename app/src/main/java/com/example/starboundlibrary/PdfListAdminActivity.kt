@@ -21,8 +21,8 @@ class PdfListAdminActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding
-        setContentView(R.layout.activity_pdf_list_admin)
+        binding = ActivityPdfListAdminBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         setupActionBar()
 
         // get from intent
@@ -61,7 +61,7 @@ class PdfListAdminActivity : AppCompatActivity() {
         pdfArrayList = ArrayList()
 
         val ref = FirebaseDatabase.getInstance().getReference("Books")
-        ref.orderByChild("categoryId:").equalTo(categoryId)
+        ref.orderByChild("categoryId").equalTo(categoryId)
             .addValueEventListener(object: ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     pdfArrayList.clear()

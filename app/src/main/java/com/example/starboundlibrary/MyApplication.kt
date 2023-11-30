@@ -3,6 +3,7 @@ package com.example.starboundlibrary
 import android.app.Application
 import android.icu.text.CaseMap.Title
 import android.text.format.DateFormat
+import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -45,8 +46,7 @@ class MyApplication : Application() {
             pdfView: PDFView,
             progressBar: ProgressBar,
             pagesTv: TextView?
-        ){
-
+        ) {
             val ref = FirebaseStorage.getInstance().getReferenceFromUrl(pdfUrl)
             ref.getBytes(Constants.MAX_BYTES_PDF)
                 .addOnSuccessListener { bytes ->
@@ -55,29 +55,30 @@ class MyApplication : Application() {
                         .spacing(0)
                         .swipeHorizontal(false)
                         .enableSwipe(false)
-                        .onError {t ->
+                        .onError { t ->
                             progressBar.visibility = View.INVISIBLE
+                            Log.e("PDF_VIEW_ERROR", "PDFView error: ${t.message}")
                         }
                         .onPageError { page, t ->
                             progressBar.visibility = View.INVISIBLE
+                            Log.e("PDF_PAGE_ERROR", "Failed to load PDF page $page: ${t.message}")
                         }
-                        .onLoad {nbPages ->
+                        .onLoad { nbPages ->
                             progressBar.visibility = View.INVISIBLE
 
-                            if (pagesTv != null){
+                            if (pagesTv != null) {
                                 pagesTv.text = "$nbPages"
                             }
                         }
                         .load()
                 }
-                .addOnFailureListener {
-
+                .addOnFailureListener { exception ->
+                    progressBar.visibility = View.INVISIBLE
+                    Log.e("PDF_LOAD_ERROR", "Failed to load PDF: ${exception.message}")
                 }
         }
 
-    }
-
-    fun loadCategory() {
 
     }
+
 }
