@@ -4,6 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#808080</color>
     <color name="seed">#734949</color>
+    <color name="transparent">#0000000</color>
     <color name="md_theme_light_primary">#9C4144</color>
     <color name="md_theme_light_onPrimary">#FFFFFF</color>
     <color name="md_theme_light_primaryContainer">#FFDAD9</color>

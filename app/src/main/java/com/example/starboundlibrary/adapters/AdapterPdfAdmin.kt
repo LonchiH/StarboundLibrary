@@ -64,6 +64,8 @@ class AdapterPdfAdmin: RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fil
             pagesTv = null
         )
 
+
+
     }
 
     override fun getFilter(): Filter {

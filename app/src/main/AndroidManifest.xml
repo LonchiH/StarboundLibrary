@@ -3,16 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".utils.MyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".utils.MyApplication"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.StarboundLibrary"
         tools:targetApi="31">
+        <activity
+            android:name=".activities.PdfDetailActivity"
+            android:exported="false" />
         <activity
             android:name=".activities.PdfListAdminActivity"
             android:exported="false" />
