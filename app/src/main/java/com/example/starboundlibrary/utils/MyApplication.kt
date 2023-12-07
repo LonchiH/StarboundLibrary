@@ -1,16 +1,14 @@
-package com.example.starboundlibrary
+package com.example.starboundlibrary.utils
 
 import android.app.Application
-import android.icu.text.CaseMap.Title
 import android.text.format.DateFormat
 import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
+import com.example.starboundlibrary.utils.Constants
 import com.github.barteksc.pdfviewer.PDFView
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.storageMetadata
 import java.util.Calendar
 import java.util.Locale
 

@@ -1,6 +1,8 @@
-package com.example.starboundlibrary
+package com.example.starboundlibrary.utils
 
 import android.widget.Filter
+import com.example.starboundlibrary.adapters.AdapterPdfAdmin
+import com.example.starboundlibrary.models.ModelPdf
 
 
 class FilterPdfAdmin: Filter {

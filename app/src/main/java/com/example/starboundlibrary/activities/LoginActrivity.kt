@@ -1,29 +1,25 @@
-package com.example.starboundlibrary
+package com.example.starboundlibrary.activities
 
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.Toast
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.starboundlibrary.databinding.ActivityLoginBinding
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import java.util.regex.Pattern
 
-class Login : AppCompatActivity() {
+class LoginActrivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivityLoginBinding
     private lateinit var loadingProgress: ProgressBar
@@ -39,7 +35,7 @@ class Login : AppCompatActivity() {
 
         // go to signup
         binding.btnSignUPPP.setOnClickListener {
-            startActivity(Intent(this@Login, Signup::class.java))
+            startActivity(Intent(this@LoginActrivity, SignupActivity::class.java))
         }
 
         userEmail = binding.logEmail
@@ -100,10 +96,10 @@ class Login : AppCompatActivity() {
                     val userType = snapshot.child("userType").value
                     val userName = snapshot.child("name").value as? String
                     if (userType == "user") {
-                        startActivity(Intent(this@Login, DashboardUserActivity::class.java).putExtra("userName", userName))
+                        startActivity(Intent(this@LoginActrivity, DashboardUserActivity::class.java).putExtra("userName", userName))
                         finish()
                     } else {
-                        startActivity(Intent(this@Login, DashboardAdminActivity::class.java))
+                        startActivity(Intent(this@LoginActrivity, DashboardAdminActivity::class.java))
                         finish()
                     }
                 }

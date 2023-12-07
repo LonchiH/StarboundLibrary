@@ -1,7 +1,9 @@
-package com.example.starboundlibrary
+package com.example.starboundlibrary.utils
 
 import android.annotation.SuppressLint
 import android.widget.Filter
+import com.example.starboundlibrary.adapters.AdapterCategory
+import com.example.starboundlibrary.models.ModelCategory
 
 class FilterCategory: Filter {
     //arraylist to search

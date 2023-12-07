@@ -1,8 +1,9 @@
-package com.example.starboundlibrary
+package com.example.starboundlibrary.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.starboundlibrary.R
 import com.example.starboundlibrary.databinding.ActivityDashboardUserBinding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -50,7 +51,7 @@ class DashboardUserActivity : AppCompatActivity() {
             Firebase.auth.signOut()
             onBackPressedDispatcher.onBackPressed()
 
-            val intent = Intent(this, Login::class.java)
+            val intent = Intent(this, LoginActrivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
             finish()

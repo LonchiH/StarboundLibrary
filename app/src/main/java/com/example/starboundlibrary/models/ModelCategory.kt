@@ -1,4 +1,4 @@
-package com.example.starboundlibrary
+package com.example.starboundlibrary.models
 
 class ModelCategory {
     var id:String = ""

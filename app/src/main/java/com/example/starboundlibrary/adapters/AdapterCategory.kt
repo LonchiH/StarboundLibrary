@@ -1,4 +1,4 @@
-package com.example.starboundlibrary
+package com.example.starboundlibrary.adapters
 
 import android.app.AlertDialog
 import android.content.Context
@@ -12,6 +12,9 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.starboundlibrary.utils.FilterCategory
+import com.example.starboundlibrary.models.ModelCategory
+import com.example.starboundlibrary.activities.PdfListAdminActivity
 import com.example.starboundlibrary.databinding.RowCategoryBinding
 import com.google.firebase.database.FirebaseDatabase
 

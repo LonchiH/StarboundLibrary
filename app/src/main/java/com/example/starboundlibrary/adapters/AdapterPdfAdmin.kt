@@ -1,4 +1,4 @@
-package com.example.starboundlibrary
+package com.example.starboundlibrary.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
+import com.example.starboundlibrary.utils.FilterPdfAdmin
+import com.example.starboundlibrary.models.ModelPdf
+import com.example.starboundlibrary.utils.MyApplication
 import com.example.starboundlibrary.databinding.RowPdfAdminBinding
 
 class AdapterPdfAdmin: RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Filterable {
@@ -53,7 +56,13 @@ class AdapterPdfAdmin: RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fil
 
         holder.titleTv.text = title
 
-        MyApplication.loadPdfFromUrlSinglePage(pdfUrl, title, holder.pdf, holder.progressBar, pagesTv = null)
+        MyApplication.loadPdfFromUrlSinglePage(
+            pdfUrl,
+            title,
+            holder.pdf,
+            holder.progressBar,
+            pagesTv = null
+        )
 
     }
 

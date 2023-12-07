@@ -1,4 +1,4 @@
-package com.example.starboundlibrary
+package com.example.starboundlibrary.activities
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -11,6 +11,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseUser
 import androidx.appcompat.app.AppCompatActivity
+import com.example.starboundlibrary.R
 import com.example.starboundlibrary.databinding.ActivitySignupBinding
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.Firebase
@@ -18,7 +19,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import com.google.firebase.database.FirebaseDatabase
 
-class Signup : AppCompatActivity() {
+class SignupActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivitySignupBinding
@@ -132,7 +133,7 @@ class Signup : AppCompatActivity() {
             .setValue(hashMap)
             .addOnSuccessListener {
                 showToast(this, "Account created...")
-                startActivity(Intent(this@Signup, DashboardUserActivity::class.java))
+                startActivity(Intent(this@SignupActivity, DashboardUserActivity::class.java))
                 finish()
             }
             .addOnFailureListener {e ->

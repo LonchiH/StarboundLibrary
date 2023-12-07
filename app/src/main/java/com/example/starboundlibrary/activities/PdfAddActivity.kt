@@ -1,4 +1,4 @@
-package com.example.starboundlibrary
+package com.example.starboundlibrary.activities
 
 import android.app.AlertDialog
 import android.app.ProgressDialog
@@ -11,11 +11,11 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
+import com.example.starboundlibrary.models.ModelCategory
+import com.example.starboundlibrary.R
 import com.example.starboundlibrary.databinding.ActivityPdfAddBinding
 import com.google.android.gms.tasks.Task
-import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase

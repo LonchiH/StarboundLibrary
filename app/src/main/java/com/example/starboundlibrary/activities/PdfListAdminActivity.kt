@@ -1,9 +1,12 @@
-package com.example.starboundlibrary
+package com.example.starboundlibrary.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import com.example.starboundlibrary.models.ModelPdf
+import com.example.starboundlibrary.R
+import com.example.starboundlibrary.adapters.AdapterPdfAdmin
 import com.example.starboundlibrary.databinding.ActivityPdfListAdminBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
