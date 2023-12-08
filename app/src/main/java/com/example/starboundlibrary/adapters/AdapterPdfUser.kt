@@ -5,23 +5,30 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.example.starboundlibrary.activities.PdfDetailActivity
 import com.example.starboundlibrary.models.ModelPdf
 import com.example.starboundlibrary.databinding.RowPdfUserBinding
+import com.example.starboundlibrary.utils.FilterPdfUser
 import com.example.starboundlibrary.utils.MyApplication
 
-class AdapterPdfUser: RecyclerView.Adapter<AdapterPdfUser.HolderPdfUser>{
+class AdapterPdfUser: RecyclerView.Adapter<AdapterPdfUser.HolderPdfUser>, Filterable{
 
     private var context: Context
 
-    private var pdfArrayList: ArrayList<ModelPdf>
+    var pdfArrayList: ArrayList<ModelPdf>
+    var filterList: ArrayList<ModelPdf>
 
     private lateinit var binding: RowPdfUserBinding
+
+    private var filter: FilterPdfUser? = null
 
     constructor(context: Context, pdfArrayList: ArrayList<ModelPdf>) : super() {
         this.context = context
         this.pdfArrayList = pdfArrayList
+        this.filterList = pdfArrayList
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HolderPdfUser {
@@ -55,7 +62,7 @@ class AdapterPdfUser: RecyclerView.Adapter<AdapterPdfUser.HolderPdfUser>{
             title,
             holder.pdfView,
             holder.progressBar,
-            pagesTv = null
+            null
         )
 
         holder.itemView.setOnClickListener{
@@ -70,5 +77,12 @@ class AdapterPdfUser: RecyclerView.Adapter<AdapterPdfUser.HolderPdfUser>{
         var pdfView = binding.pdfView
         var progressBar = binding.progressBar
         var titleTb = binding.bookTitle
+    }
+
+    override fun getFilter(): Filter {
+        if(filter ==null) {
+            filter = FilterPdfUser(filterList, this)
+        }
+        return filter as FilterPdfUser
     }
 }
