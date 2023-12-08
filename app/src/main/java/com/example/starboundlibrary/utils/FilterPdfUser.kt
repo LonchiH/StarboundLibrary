@@ -23,7 +23,7 @@ class FilterPdfUser: Filter {
 
         // val to be searched
 
-        if(constraint != null && constraint.isNotEmpty()){
+        if((constraint != null) && constraint.isNotEmpty()){
 
 
             constraint = constraint.toString().uppercase()

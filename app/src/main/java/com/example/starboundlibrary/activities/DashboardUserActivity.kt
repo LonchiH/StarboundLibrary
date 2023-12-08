@@ -52,8 +52,8 @@ class DashboardUserActivity : AppCompatActivity() {
                 categoryArrayList.clear()
 
                 val modelAll = ModelCategory("01", "All", 1, "")
-                val modelMostDownloaded = ModelCategory("01", "All", 1, "")
-                val modelMostViewed = ModelCategory("01", "All", 1, "")
+                val modelMostDownloaded = ModelCategory("01", "Most Downloaded", 1, "")
+                val modelMostViewed = ModelCategory("01", "Most Vewed", 1, "")
 
                 // add to list
                 categoryArrayList.add(modelAll)
