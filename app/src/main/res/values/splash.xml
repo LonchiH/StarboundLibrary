@@ -2,7 +2,7 @@
 <resources>
     <style name="Theme.StarboundLibrary.Splash" parent="Theme.StarboundLibrary">
         <item name="android:windowSplashScreenBackground">#28282B</item>
-        <item name="android:windowSplashScreenAnimatedIcon">@drawable/splash</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/splash1</item>
         <item name="android:windowSplashScreenAnimationDuration">5000</item>
         <item name="android:windowSplashScreenIconBackgroundColor">@color/white</item>
     </style>
