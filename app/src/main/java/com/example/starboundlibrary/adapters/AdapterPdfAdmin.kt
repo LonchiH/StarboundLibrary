@@ -66,7 +66,7 @@ class AdapterPdfAdmin: RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fil
             pagesTv = null
         )
 
-        holder.itemView.setOnClickListener{
+        binding.pdfView.setOnClickListener(){
             val intent = Intent(context, PdfDetailActivity::class.java)
             intent.putExtra("bookId", pdfId)
             context.startActivity(intent)

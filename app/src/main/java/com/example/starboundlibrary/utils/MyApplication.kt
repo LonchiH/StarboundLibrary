@@ -1,5 +1,6 @@
 package com.example.starboundlibrary.utils
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.text.format.DateFormat
 import android.util.Log
@@ -30,6 +31,7 @@ class MyApplication : Application() {
             return DateFormat.format("dd/MM/yyyy", cal).toString()
         }
 
+        @SuppressLint("SetTextI18n")
         fun loadPdfSize(pdfUrl: String, pdfTitle: String, sizeTv: TextView){
 
             val ref = FirebaseStorage.getInstance().getReferenceFromUrl(pdfUrl)
@@ -39,11 +41,11 @@ class MyApplication : Application() {
                     val kb = bytes/1024
                     val mb = kb/1024
                     if(mb>=1){
-                        sizeTv.text = "${String.format("$.2f", mb)} MB"
+                        sizeTv.text = "${String.format("%.2f", mb)} MB"
                     } else if (kb >= 1){
-                        sizeTv.text = "${String.format("$.2f", kb)} KB"
+                        sizeTv.text = "${String.format("%.2f", kb)} KB"
                     } else {
-                        sizeTv.text = "${String.format("$.2f", bytes)} bytes"
+                        sizeTv.text = "${String.format("%.2f", bytes)} bytes"
                     }
                 }
                 .addOnFailureListener {
