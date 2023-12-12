@@ -22,18 +22,20 @@ class PdfDetailActivity : AppCompatActivity() {
         binding = ActivityPdfDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupActionBar()
-        
-        // increment book view count
-        MyApplication.incrementBookViewCount(bookId)
 
         // get book id from intent
         bookId = intent.getStringExtra("bookId")!!
+
+        // increment book view count
+        MyApplication.incrementBookViewCount(bookId)
 
         loadBookDetails()
 
         // handle click to open pdf
         binding.readBookBtn.setOnClickListener{
-            startActivity(Intent(this, PdfViewActivity::class.java))
+            val intent = Intent(this, PdfViewActivity::class.java)
+            intent.putExtra("bookId", bookId)
+            startActivity(intent)
         }
 
     }
