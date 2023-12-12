@@ -1,12 +1,14 @@
 package com.example.starboundlibrary.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
+import com.example.starboundlibrary.activities.PdfDetailActivity
 import com.example.starboundlibrary.utils.FilterPdfAdmin
 import com.example.starboundlibrary.models.ModelPdf
 import com.example.starboundlibrary.utils.MyApplication
@@ -64,7 +66,11 @@ class AdapterPdfAdmin: RecyclerView.Adapter<AdapterPdfAdmin.HolderPdfAdmin>, Fil
             pagesTv = null
         )
 
-
+        holder.itemView.setOnClickListener{
+            val intent = Intent(context, PdfDetailActivity::class.java)
+            intent.putExtra("bookId", pdfId)
+            context.startActivity(intent)
+        }
 
     }
 
