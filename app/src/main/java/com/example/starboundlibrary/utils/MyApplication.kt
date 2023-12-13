@@ -126,7 +126,7 @@ class MyApplication : Application() {
 
                         // set to db
                         val dbRef = FirebaseDatabase.getInstance().getReference("Books")
-                        ref.child(bookId)
+                        dbRef.child(bookId)
                             .updateChildren(hashMap)
                     }
 
