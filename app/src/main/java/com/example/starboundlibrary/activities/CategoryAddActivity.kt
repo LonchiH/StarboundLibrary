@@ -9,6 +9,7 @@ import com.example.starboundlibrary.R
 import com.example.starboundlibrary.databinding.ActivityCategoryAddBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import es.dmoral.toasty.Toasty
 
 class CategoryAddActivity : AppCompatActivity() {
 
@@ -38,7 +39,7 @@ class CategoryAddActivity : AppCompatActivity() {
         category = binding.categoryEt.text.toString().trim()
 
         if (category.isEmpty()){
-            showToast(this, "Enter Category...")
+            Toasty.normal(this, "Enter Category...").show()
         } else {
             addCategoryFirebase()
         }
@@ -62,17 +63,13 @@ class CategoryAddActivity : AppCompatActivity() {
             .setValue(hashMap)
             .addOnSuccessListener {
                 progressDialog.dismiss()
-                showToast(this, "Added successfully...")
+                Toasty.normal(this, "Added successfully...").show()
             }
             .addOnFailureListener{ e->
                 progressDialog.dismiss()
-                showToast(this, "Failed to add due to ${e.message}")
+                Toasty.normal(this, "Failed to add due to ${e.message}").show()
             }
 
-    }
-
-    private fun showToast(context: Context, message: String, duration: Int = Toast.LENGTH_SHORT) {
-        Toast.makeText(context, message, duration).show()
     }
 
     private fun setupActionBar() {

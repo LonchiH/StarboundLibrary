@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.storageMetadata
+import es.dmoral.toasty.Toasty
 import java.util.Calendar
 import java.util.Locale
 
@@ -154,7 +155,7 @@ class MyApplication : Application() {
         }
 
         private fun showToast(context: Context, message: String, duration: Int = Toast.LENGTH_SHORT) {
-            Toast.makeText(context, message, duration).show()
+            Toasty.normal(context, message, duration).show()
         }
 
     }

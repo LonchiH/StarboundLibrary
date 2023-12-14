@@ -15,6 +15,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import es.dmoral.toasty.Toasty
 
 class PdfDetailActivity : AppCompatActivity() {
 
@@ -156,6 +157,6 @@ class PdfDetailActivity : AppCompatActivity() {
     }
 
     private fun showToast(context: Context, message: String, duration: Int = Toast.LENGTH_SHORT) {
-        Toast.makeText(context, message, duration).show()
+        Toasty.normal(context, message, duration).show()
     }
 }
