@@ -1,4 +1,4 @@
-package com.example.starboundlibrary.utils
+package com.example.starboundlibrary.filters
 
 import android.annotation.SuppressLint
 import android.widget.Filter

@@ -1,4 +1,4 @@
-package com.example.starboundlibrary
+package com.example.starboundlibrary.utils
 
 import android.os.Bundle
 import android.text.Editable
@@ -23,7 +23,7 @@ class BookUserFragment : Fragment {
 
     public companion object {
         // receive data from activity to load books
-        public fun newInstance(categoryId: String, category: String, uid: String): BookUserFragment{
+        public fun newInstance(categoryId: String, category: String, uid: String): BookUserFragment {
             val fragment = BookUserFragment()
 
             val args = Bundle()

@@ -1,4 +1,4 @@
-package com.example.starboundlibrary.utils
+package com.example.starboundlibrary.filters
 
 import android.widget.Filter
 import com.example.starboundlibrary.adapters.AdapterPdfAdmin

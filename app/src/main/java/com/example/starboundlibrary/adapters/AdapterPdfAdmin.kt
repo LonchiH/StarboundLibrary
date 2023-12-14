@@ -9,7 +9,7 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.example.starboundlibrary.activities.PdfDetailActivity
-import com.example.starboundlibrary.utils.FilterPdfAdmin
+import com.example.starboundlibrary.filters.FilterPdfAdmin
 import com.example.starboundlibrary.models.ModelPdf
 import com.example.starboundlibrary.utils.MyApplication
 import com.example.starboundlibrary.databinding.RowPdfAdminBinding

@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
-import com.example.starboundlibrary.BookUserFragment
+import com.example.starboundlibrary.utils.BookUserFragment
 import com.example.starboundlibrary.R
 import com.example.starboundlibrary.databinding.ActivityDashboardUserBinding
 import com.example.starboundlibrary.models.ModelCategory

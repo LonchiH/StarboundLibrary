@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.starboundlibrary.activities.PdfDetailActivity
 import com.example.starboundlibrary.models.ModelPdf
 import com.example.starboundlibrary.databinding.RowPdfUserBinding
-import com.example.starboundlibrary.utils.FilterPdfUser
+import com.example.starboundlibrary.filters.FilterPdfUser
 import com.example.starboundlibrary.utils.MyApplication
 
 class AdapterPdfUser: RecyclerView.Adapter<AdapterPdfUser.HolderPdfUser>, Filterable{
