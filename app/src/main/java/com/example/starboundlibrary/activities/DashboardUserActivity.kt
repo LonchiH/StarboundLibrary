@@ -4,10 +4,13 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.example.starboundlibrary.FavoritesActivity
 import com.example.starboundlibrary.utils.BookUserFragment
 import com.example.starboundlibrary.R
 import com.example.starboundlibrary.databinding.ActivityDashboardUserBinding
@@ -38,6 +41,22 @@ class DashboardUserActivity : AppCompatActivity() {
 
         setupWithViewPagerAdapter(binding.viewPager)
         binding.tabLayout.setupWithViewPager(binding.viewPager)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.bottom_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.bottom_favorites -> {
+                val intent = Intent(this, FavoritesActivity::class.java)
+                startActivity(intent)
+                return true
+            }
+        }
+        return true
     }
 
     private fun setupWithViewPagerAdapter(viewPager: ViewPager){
