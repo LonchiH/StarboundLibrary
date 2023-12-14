@@ -77,4 +77,7 @@ dependencies {
 
     // pdf library
     implementation("com.github.barteksc:android-pdf-viewer:2.8.2")
+
+    // toasty
+    implementation("com.github.GrenderG:Toasty:1.5.2")
 }
