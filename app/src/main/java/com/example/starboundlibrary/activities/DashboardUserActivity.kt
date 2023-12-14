@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
-import com.example.starboundlibrary.FavoritesActivity
 import com.example.starboundlibrary.utils.BookUserFragment
 import com.example.starboundlibrary.R
 import com.example.starboundlibrary.databinding.ActivityDashboardUserBinding
@@ -56,7 +55,8 @@ class DashboardUserActivity : AppCompatActivity() {
                 return true
             }
             R.id.bottom_profile -> {
-                val intent = Intent(this, FavoritesActivity::class.java)
+                val userName = intent.getStringExtra("userName")
+                val intent = Intent(this, ProfileActivity::class.java).putExtra("userName", userName)
                 startActivity(intent)
                 return true
             }
@@ -175,7 +175,7 @@ class DashboardUserActivity : AppCompatActivity() {
             binding.titleTv.text = "Not Logged In"
             finish()
         } else {
-            binding.titleTv.text = "Hello there, $userName"
+            binding.titleTv.text = "Hello there, $userName!"
         }
     }
 

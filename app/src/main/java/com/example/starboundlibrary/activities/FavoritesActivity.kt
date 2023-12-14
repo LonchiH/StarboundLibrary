@@ -1,7 +1,8 @@
-package com.example.starboundlibrary
+package com.example.starboundlibrary.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.starboundlibrary.R
 import com.example.starboundlibrary.adapters.AdapterPdfFavorites
 import com.example.starboundlibrary.databinding.ActivityFavoritesBinding
 import com.example.starboundlibrary.models.ModelPdf

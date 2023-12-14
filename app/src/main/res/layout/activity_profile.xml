@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.FavoritesActivity"
+    tools:context=".activities.ProfileActivity"
     android:background="#28282B">
 
     <androidx.appcompat.widget.Toolbar
@@ -19,31 +19,21 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:text="Favorites"
+            android:text="Profile"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
 
     </androidx.appcompat.widget.Toolbar>
 
-    <View
-        android:id="@+id/view1"
+    <TextView
+        android:id="@+id/hello"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/regToolbar"
-        android:layout_margin="10dp"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/favoritesRv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/regToolbar"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"
-        tools:listitem="@layout/row_pdf_favorites" />
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:fontFamily="@font/bungee"
+        android:textSize="40dp"
+        android:text="Hello There"/>
 
 </RelativeLayout>
