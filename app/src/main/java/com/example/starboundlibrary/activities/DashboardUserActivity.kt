@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.example.starboundlibrary.AboutActivity
 import com.example.starboundlibrary.utils.BookUserFragment
 import com.example.starboundlibrary.R
 import com.example.starboundlibrary.databinding.ActivityDashboardUserBinding
@@ -57,6 +58,11 @@ class DashboardUserActivity : AppCompatActivity() {
             R.id.bottom_profile -> {
                 val userName = intent.getStringExtra("userName")
                 val intent = Intent(this, ProfileActivity::class.java).putExtra("userName", userName)
+                startActivity(intent)
+                return true
+            }
+            R.id.bottom_about -> {
+                val intent = Intent(this, AboutActivity::class.java)
                 startActivity(intent)
                 return true
             }

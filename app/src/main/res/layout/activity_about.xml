@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutActivity"
+    android:background="#28282B">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/regToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:clickable="true"
+        >
+
+        <TextView
+            android:id="@+id/titleTv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="About"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/hello"
+        android:layout_below="@id/regToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:textColor="@color/white"
+        android:fontFamily="@font/bungee"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:text="This project is crafted by"/>
+
+    <TextView
+        android:id="@+id/name1"
+        android:layout_below="@id/hello"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:text="Name"/>
+
+    <TextView
+        android:id="@+id/name2"
+        android:layout_below="@id/name1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:padding="10dp"
+        android:text="Name"/>
+
+</RelativeLayout>
