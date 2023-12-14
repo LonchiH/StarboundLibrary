@@ -65,7 +65,7 @@ class AdapterPdfUser: RecyclerView.Adapter<AdapterPdfUser.HolderPdfUser>, Filter
             null
         )
 
-        holder.itemView.setOnClickListener{
+        binding.pdfView.setOnClickListener(){
             val intent = Intent(context, PdfDetailActivity::class.java)
             intent.putExtra("bookId", bookId)
             context.startActivity(intent)

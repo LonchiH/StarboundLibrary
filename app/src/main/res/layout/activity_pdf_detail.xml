@@ -218,7 +218,7 @@
                     <TableRow>
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:id="@+id/pagesLabelTv"
                             style="@style/TextAppearance.MaterialComponents.Caption"
@@ -228,7 +228,7 @@
                             />
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:id="@+id/pagesTv"
                             android:layout_weight="1"
@@ -273,6 +273,16 @@
             android:text="Dive into the tome of knowledge!"
             android:fontFamily="@font/bungee"
             android:drawableLeft="@drawable/ic_book_white"
+            android:layout_weight="1"
+            />
+
+        <Button
+            android:id="@+id/favoriteBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Favorite"
+            android:fontFamily="@font/bungee"
+            android:drawableLeft="@drawable/ic_favorite_border_white"
             android:layout_weight="1"
             />
 
