@@ -55,6 +55,11 @@ class DashboardUserActivity : AppCompatActivity() {
                 startActivity(intent)
                 return true
             }
+            R.id.bottom_profile -> {
+                val intent = Intent(this, FavoritesActivity::class.java)
+                startActivity(intent)
+                return true
+            }
         }
         return true
     }

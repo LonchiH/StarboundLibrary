@@ -75,7 +75,7 @@ class DashboardAdminActivity : AppCompatActivity() {
     private fun checkUser() {
         val firebaseUser = auth.currentUser
         if (firebaseUser == null) {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
         } else {
 
