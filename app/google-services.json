@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "880319328624",
-    "project_id": "sblibrary-88d1a",
-    "storage_bucket": "sblibrary-88d1a.appspot.com"
+    "project_number": "29721524092",
+    "project_id": "star-bound-library",
+    "storage_bucket": "star-bound-library.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:880319328624:android:030a88d224f97efea6dfb5",
+        "mobilesdk_app_id": "1:29721524092:android:2635195c2ffee8fb3fd6f9",
         "android_client_info": {
           "package_name": "com.example.starboundlibrary"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDwDcZQ50Qs0C0RnMCN7qISACjyQpj4JqQ"
+          "current_key": "AIzaSyC-uXg0pRxmVBuUbbem7bNxIgzGrT3_MDg"
         }
       ],
       "services": {
