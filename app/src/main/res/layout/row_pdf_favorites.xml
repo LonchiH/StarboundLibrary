@@ -37,13 +37,13 @@
             android:textSize="20sp" />
 
         <ImageButton
-            android:id="@+id/moreBtn"
+            android:id="@+id/removeFavorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/ic_more_white"
+            android:src="@drawable/ic_favorite_filled_white"
             android:background="#00000000"
-            android:paddingEnd="5dp"
+            android:padding="10dp"
             />
 
 

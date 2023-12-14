@@ -41,7 +41,7 @@
             android:name=".activities.SignupActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.LoginActrivity"
+            android:name=".activities.LoginActivity"
             android:exported="true"
             android:theme="@style/Theme.StarboundLibrary.Splash">
             <intent-filter>

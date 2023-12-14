@@ -19,7 +19,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-class LoginActrivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var binding: ActivityLoginBinding
     private lateinit var loadingProgress: ProgressBar
@@ -35,7 +35,7 @@ class LoginActrivity : AppCompatActivity() {
 
         // go to signup
         binding.btnSignUPPP.setOnClickListener {
-            startActivity(Intent(this@LoginActrivity, SignupActivity::class.java))
+            startActivity(Intent(this@LoginActivity, SignupActivity::class.java))
         }
 
         userEmail = binding.logEmail
@@ -96,10 +96,10 @@ class LoginActrivity : AppCompatActivity() {
                     val userType = snapshot.child("userType").value
                     val userName = snapshot.child("name").value as? String
                     if (userType == "user") {
-                        startActivity(Intent(this@LoginActrivity, DashboardUserActivity::class.java).putExtra("userName", userName))
+                        startActivity(Intent(this@LoginActivity, DashboardUserActivity::class.java).putExtra("userName", userName))
                         finish()
                     } else {
-                        startActivity(Intent(this@LoginActrivity, DashboardAdminActivity::class.java))
+                        startActivity(Intent(this@LoginActivity, DashboardAdminActivity::class.java))
                         finish()
                     }
                 }

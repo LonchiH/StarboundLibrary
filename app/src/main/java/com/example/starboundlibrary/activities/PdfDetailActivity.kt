@@ -54,25 +54,13 @@ class PdfDetailActivity : AppCompatActivity() {
                 showToast(this, "You are not logged in")
             } else {
                 if(isInMyFavorite){
-                    removeFromFavorite()
+                    MyApplication.removeFromFavorite(this, bookId)
                 }else{
                     addToFavorite()
                 }
             }
         }
 
-    }
-
-    private fun removeFromFavorite(){
-        val ref = FirebaseDatabase.getInstance().getReference("Users")
-        ref.child(firebaseAuth.uid!!).child("Favorites").child(bookId)
-            .removeValue()
-            .addOnSuccessListener {
-                showToast(this, "Added to Favorites")
-            }
-            .addOnFailureListener {e->
-                showToast(this, "${e.message}")
-            }
     }
 
     private fun addToFavorite(){
