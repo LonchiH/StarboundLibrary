@@ -18,6 +18,7 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import com.google.firebase.database.FirebaseDatabase
+import es.dmoral.toasty.Toasty
 
 class SignupActivity : AppCompatActivity() {
 
@@ -70,24 +71,24 @@ class SignupActivity : AppCompatActivity() {
         val password2: String = binding.regConfirmPassword.editText?.text.toString().trim()
 
         if (name.isEmpty()) {
-            showToast(this, "Enter your name...")
+            Toasty.normal(this, "Enter your name...").show()
             regBtn.setVisibility(View.VISIBLE)
             loadingProgress.setVisibility(View.INVISIBLE)
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             //invalid email add pattern
-            showToast(this, "Invalid Email Pattern...")
+            Toasty.normal(this, "Invalid Email Pattern...").show()
             regBtn.setVisibility(View.VISIBLE)
             loadingProgress.setVisibility(View.INVISIBLE)
         } else if (password.isEmpty()) {
-            showToast(this, "Enter password...")
+            Toasty.normal(this, "Enter password...").show()
             regBtn.setVisibility(View.VISIBLE)
             loadingProgress.setVisibility(View.INVISIBLE)
         } else if (password2.isEmpty()) {
-            showToast(this, "Confirm password...")
+            Toasty.normal(this, "Confirm password...").show()
             regBtn.setVisibility(View.VISIBLE)
             loadingProgress.setVisibility(View.INVISIBLE)
         } else if (password != password2) {
-            showToast(this, "Password doesn't match...")
+            Toasty.normal(this, "Password doesn't match...").show()
             regBtn.setVisibility(View.VISIBLE)
             loadingProgress.setVisibility(View.INVISIBLE)
         } else  {
@@ -100,13 +101,13 @@ class SignupActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
-                    showToast(this, "createUserWithEmail:success")
+                    Toasty.normal(this, "Success").show()
                     val user = auth.currentUser
                     updateUserInfo(name, auth.getCurrentUser())
                     finish()
                 } else {
                     // If sign in fails, display a message to the user.
-                    showToast(this, "Failed to create account")
+                    Toasty.normal(this, "Failed to create account").show()
                     regBtn.setVisibility(View.VISIBLE);
                     loadingProgress.setVisibility(View.INVISIBLE);
                 }
@@ -132,18 +133,14 @@ class SignupActivity : AppCompatActivity() {
         ref.child(uid!!)
             .setValue(hashMap)
             .addOnSuccessListener {
-                showToast(this, "Account created...")
+                Toasty.normal(this, "Account created...").show()
                 startActivity(Intent(this@SignupActivity, DashboardUserActivity::class.java))
                 finish()
             }
             .addOnFailureListener {e ->
-                showToast(this, "Failed saving user due to ${e.message}")
+                Toasty.normal(this, "Failed saving user due to ${e.message}").show()
             }
 
-    }
-
-    fun showToast(context: Context, message: String, duration: Int = Toast.LENGTH_SHORT) {
-        Toast.makeText(context, message, duration).show()
     }
 
 //    public override fun onStart() {

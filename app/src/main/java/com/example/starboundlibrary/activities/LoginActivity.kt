@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.example.starboundlibrary.databinding.ActivityLoginBinding
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.Firebase
@@ -18,6 +19,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import es.dmoral.toasty.Toasty
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -61,11 +63,11 @@ class LoginActivity : AppCompatActivity() {
         email = binding.logEmail.editText?.text.toString().trim()
         password = binding.logPassword.editText?.text.toString().trim()
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            showToast(this, "Invalid Email format...")
+            Toasty.normal(this, "Enter your Email...").show();
             signBtn.setVisibility(View.VISIBLE)
             loadingProgress.setVisibility(View.INVISIBLE)
         } else if(password.isEmpty()) {
-            showToast(this, "Enter password...")
+            Toasty.normal(this, "Enter your Password...").show();
             signBtn.setVisibility(View.VISIBLE)
             loadingProgress.setVisibility(View.INVISIBLE)
         } else {
@@ -79,7 +81,7 @@ class LoginActivity : AppCompatActivity() {
                 checkUser()
             }
             .addOnFailureListener {e ->
-                showToast(this, "Login failed due to ${e.message}")
+                Toasty.normal(this, "Login failed due to ${e.message}", Toast.LENGTH_LONG).show()
                 loadingProgress.visibility = View.INVISIBLE;
                 signBtn.visibility = View.VISIBLE
             }
@@ -107,9 +109,5 @@ class LoginActivity : AppCompatActivity() {
 
                 }
             })
-    }
-
-    private fun showToast(context: Context, message: String, duration: Int = Toast.LENGTH_SHORT) {
-        Toast.makeText(context, message, duration).show()
     }
 }
