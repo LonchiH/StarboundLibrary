@@ -1,6 +1,5 @@
 package com.example.starboundlibrary.activities
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,7 +8,6 @@ import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import com.example.starboundlibrary.databinding.ActivityLoginBinding
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.Firebase
@@ -49,8 +47,8 @@ class LoginActivity : AppCompatActivity() {
 
         signBtn.setOnClickListener {
 
-            signBtn.setVisibility(View.INVISIBLE)
-            loadingProgress.setVisibility(View.VISIBLE)
+            signBtn.visibility = View.INVISIBLE
+            loadingProgress.visibility = View.VISIBLE
 
             validateData()
 
@@ -63,26 +61,26 @@ class LoginActivity : AppCompatActivity() {
         email = binding.logEmail.editText?.text.toString().trim()
         password = binding.logPassword.editText?.text.toString().trim()
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            Toasty.normal(this, "Enter your Email...").show();
-            signBtn.setVisibility(View.VISIBLE)
-            loadingProgress.setVisibility(View.INVISIBLE)
+            Toasty.normal(this, "Enter your Email...").show()
+            signBtn.visibility = View.VISIBLE
+            loadingProgress.visibility = View.INVISIBLE
         } else if(password.isEmpty()) {
-            Toasty.normal(this, "Enter your Password...").show();
-            signBtn.setVisibility(View.VISIBLE)
-            loadingProgress.setVisibility(View.INVISIBLE)
+            Toasty.normal(this, "Enter your Password...").show()
+            signBtn.visibility = View.VISIBLE
+            loadingProgress.visibility = View.INVISIBLE
         } else {
-            SigninUserAccount(email, password)
+            signInUserAccount(email, password)
         }
     }
 
-    private fun SigninUserAccount(email: String, password: String) {
+    private fun signInUserAccount(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password)
             .addOnSuccessListener {
                 checkUser()
             }
             .addOnFailureListener {e ->
                 Toasty.normal(this, "Login failed due to ${e.message}", Toast.LENGTH_LONG).show()
-                loadingProgress.visibility = View.INVISIBLE;
+                loadingProgress.visibility = View.INVISIBLE
                 signBtn.visibility = View.VISIBLE
             }
     }

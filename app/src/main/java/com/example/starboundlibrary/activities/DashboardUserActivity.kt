@@ -180,7 +180,7 @@ class DashboardUserActivity : AppCompatActivity() {
             binding.titleTv.text = "Not Logged In"
             finish()
         } else {
-            binding.titleTv.text = "Hello there, $userName!"
+            binding.titleTv.text = "Hello there, $userName"
         }
     }
 
